@@ -20,7 +20,8 @@
  r: 5 min
   
 4. return 400 when POST product with invalid parameters  
- e: 8 min
+ e: 8 min  
+ r: 15 min
   
 5. return 200 when GET products  
  e: 3 min  
