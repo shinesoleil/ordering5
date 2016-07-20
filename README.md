@@ -64,19 +64,18 @@
   
 3. return 201 when POST user with parameters  
  e: 5 min  
+ r: 4 min
   
+4. return 400 when POST product with invalid parameters  
+ e: 8 min  
  
-4. return 200 when GET users  
+5. return 200 when GET users  
  e: 3 min  
   
-  
- 
-5. find all users  
+6. find all users  
  e: 6 min  
   
-  
- 
-6. return user json list when GET users  
+7. return user json list when GET users  
  e: 5 min  
   
   

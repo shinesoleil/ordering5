@@ -70,6 +70,5 @@ public class ProductsApiTest extends ApiSupport {
     Response get = get("products/1");
 
     assertThat(get.getStatus(), is(404));
-
   }
 }
