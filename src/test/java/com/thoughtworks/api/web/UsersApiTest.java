@@ -64,4 +64,11 @@ public class UsersApiTest extends ApiSupport {
 
     assertThat(map.get("name"), is("firstUser"));
   }
+
+  @Test
+  public void should_return_404_when_get_user_not_found() {
+    Response get = get("users/1");
+
+    assertThat(get.getStatus(), is(404));
+  }
 }
