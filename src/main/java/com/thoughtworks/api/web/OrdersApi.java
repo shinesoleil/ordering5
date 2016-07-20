@@ -5,10 +5,7 @@ import com.thoughtworks.api.domain.user.User;
 import com.thoughtworks.api.domain.user.UserRepository;
 
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.HashMap;
@@ -33,5 +30,10 @@ public class OrdersApi {
     } else {
       return Response.status(400).build();
     }
+  }
+
+  @GET
+  public Response findOrders() {
+    return Response.status(200).build();
   }
 }
