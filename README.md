@@ -91,19 +91,15 @@
 e: 10 min  
 r: 14 min
  
-2. return 404 when GET by user id fails  
+2. return 404 when GET by user id not found  
  e: 5 min  
  r: 3 min
   
-  
-
-
 * ###/users/{userId}/orders
 
 1. return 201 when POST order  
  e: 5 min  
-  
-  
+ r: 3 min
 
 2. create order with parameters and find by user id and order id  
  e: 25 min  
