@@ -88,4 +88,15 @@ public class OrderApiTest extends ApiSupport{
 
     assertThat(map.get("name"), is("firstOrder"));
   }
+
+  @Test
+  public void should_return_404_when_get_order_not_found() {
+    Map<String, Object> userInfo = TestHelper.userMap();
+    userRepository.create(userInfo);
+    long userId = Long.valueOf(String.valueOf(userInfo.get("id")));
+
+    Response get = get("users/" + userId + "/orders/1");
+
+    assertThat(get.getStatus(), is(404));
+  }
 }
