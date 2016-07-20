@@ -149,6 +149,7 @@ r: 14 min
 
 1. return 201 when POST payment  
  e: 5 min  
+ r: 3 min
   
   
  
