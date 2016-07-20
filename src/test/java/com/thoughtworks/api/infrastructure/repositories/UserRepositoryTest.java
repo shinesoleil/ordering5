@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import javax.inject.Inject;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -29,5 +30,17 @@ public class UserRepositoryTest {
     Optional<User> userOptional = userRepository.findById(id);
 
     assertThat(userOptional.get().getId(), is(id));
+  }
+
+  @Test
+  public void should_find_all_users() {
+    Map<String, Object> info = TestHelper.userMap();
+    userRepository.create(info);
+    long id = Long.valueOf(String.valueOf(info.get("id")));
+
+    List<User> userList = userRepository.find();
+
+    assertThat(userList.size(), is(1));
+    assertThat(userList.get(0).getId(), is(id));
   }
 }

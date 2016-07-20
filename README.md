@@ -76,6 +76,7 @@
   
 6. find all users  
  e: 6 min  
+ r: 4 min
   
 7. return user json list when GET users  
  e: 5 min  
