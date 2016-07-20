@@ -9,6 +9,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
 
 @Path("users/{userId}/orders")
@@ -33,7 +34,9 @@ public class OrdersApi {
   }
 
   @GET
-  public Response findOrders() {
-    return Response.status(200).build();
+  @Produces(MediaType.APPLICATION_JSON)
+  public List<Order> findOrders(@PathParam("userId") long userId) {
+    User user = userRepository.findById(userId).get();
+    return user.find();
   }
 }
