@@ -54,6 +54,7 @@
 
 1. return 201 when POST user  
  e: 5 min  
+ r: 4 min
   
  
 2. create user with parameters and find user by user id  
