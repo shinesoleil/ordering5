@@ -68,6 +68,7 @@
   
 4. return 400 when POST product with invalid parameters  
  e: 8 min  
+ r: 3 min  
  
 5. return 200 when GET users  
  e: 3 min  
