@@ -71,6 +71,12 @@ public class Order implements Record{
 
   @Override
   public Map<String, Object> toJson(Routes routes) {
-    return null;
+    return new HashMap<String, Object>() {{
+      put("uri", "orders/" + getId());
+      put("name", getName());
+      put("address", getAddress());
+      put("phone", getPhone());
+      put("created_at", getTime());
+    }};
   }
 }

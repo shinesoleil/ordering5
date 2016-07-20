@@ -136,6 +136,7 @@ r: 14 min
 
 1. return order json when GET order by user id and order id  
  e: 10 min  
+ r: 5 min
   
 
 2. return 404 when GET order by user id and order id fails  

@@ -39,4 +39,13 @@ public class OrdersApi {
     User user = userRepository.findById(userId).get();
     return user.find();
   }
+
+  @GET
+  @Path("{orderId}")
+  @Produces(MediaType.APPLICATION_JSON)
+  public Order findOrderById(@PathParam("userId") long userId,
+                             @PathParam("orderId") long orderId) {
+    User user = userRepository.findById(userId).get();
+    return user.findOrderById(orderId).orElseThrow(() -> new NotFoundException("Can not find order by id"));
+  }
 }
