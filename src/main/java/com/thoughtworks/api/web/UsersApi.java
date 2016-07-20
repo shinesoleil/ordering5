@@ -42,4 +42,11 @@ public class UsersApi {
   public List<User> find() {
     return userRepository.find();
   }
+
+  @GET
+  @Path("{userId}")
+  @Produces(MediaType.APPLICATION_JSON)
+  public User findByUserId(@PathParam("userId") long userId) {
+    return userRepository.findById(userId).get();
+  }
 }

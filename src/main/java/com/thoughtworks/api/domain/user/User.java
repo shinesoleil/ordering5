@@ -37,6 +37,10 @@ public class User implements Record {
 
   @Override
   public Map<String, Object> toJson(Routes routes) {
-    return null;
+    return new HashMap<String, Object>() {{
+      put("id", id);
+      put("uri", routes.userUrl(User.this));
+      put("name", name);
+    }};
   }
 }
