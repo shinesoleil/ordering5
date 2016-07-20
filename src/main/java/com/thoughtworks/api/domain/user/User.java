@@ -59,6 +59,9 @@ public class User implements Record {
     return Optional.ofNullable(orderMapper.findById(orderId));
   }
 
+  public List<Order> find() {
+    return orderMapper.find();
+  }
   @Override
   public Map<String, Object> toRefJson(Routes routes) {
     return new HashMap<String, Object>() {{

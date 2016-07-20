@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import javax.inject.Inject;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -41,5 +42,27 @@ public class OrderManipulationTest {
 
     assertThat(orderOptional.get().getId(), is(orderId));
 
+  }
+
+  @Test
+  public void should_find_all_orders() {
+    Map<String, Object> productInfo = TestHelper.productMap();
+    productRepository.create(productInfo);
+    long productId = Long.valueOf(String.valueOf(productInfo.get("id")));
+
+    Map<String, Object> userInfo = TestHelper.userMap();
+    userRepository.create(userInfo);
+    long userId = Long.valueOf(String.valueOf(userInfo.get("id")));
+
+    Map<String, Object> orderInfo = TestHelper.orderMap(productId, userId);
+
+    User user = userRepository.findById(userId).get();
+    user.placeOrder(orderInfo);
+    long orderId = Long.valueOf(String.valueOf(orderInfo.get("id")));
+
+    List<Order> orderList = user.find();
+
+    assertThat(orderList.size(), is(1));
+    assertThat(orderList.get(0).getId(), is(orderId));
   }
 }
