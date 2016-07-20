@@ -3,10 +3,11 @@ package com.thoughtworks.api.infrastructure.mybatis.mappers;
 import com.thoughtworks.api.domain.user.User;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.Map;
+
 public interface UserMapper {
-    User ofId(@Param("id") String id);
+    void save(@Param("info") Map<String, Object> info);
 
-    void save(@Param("user") User user);
+    User findById(@Param("id") long id);
 
-    User findByUserName(@Param("userName") String userName);
 }

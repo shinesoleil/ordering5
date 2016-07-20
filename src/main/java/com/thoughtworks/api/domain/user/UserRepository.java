@@ -1,11 +1,10 @@
 package com.thoughtworks.api.domain.user;
 
+import java.util.Map;
 import java.util.Optional;
 
 public interface UserRepository {
-    User save(User user);
+  void create(Map<String, Object> info);
 
-    Optional<User> ofId(UserId id);
-
-    User findUserByName(String userName);
+  Optional<User> findById(long id);
 }
