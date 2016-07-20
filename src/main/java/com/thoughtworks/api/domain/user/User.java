@@ -1,12 +1,24 @@
 package com.thoughtworks.api.domain.user;
 
+import com.thoughtworks.api.domain.order.Order;
+import com.thoughtworks.api.infrastructure.mybatis.mappers.OrderMapper;
+import com.thoughtworks.api.infrastructure.mybatis.mappers.ProductMapper;
 import com.thoughtworks.api.infrastructure.records.Record;
 import com.thoughtworks.api.web.jersey.Routes;
 
+import javax.inject.Inject;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class User implements Record {
+  @Inject
+  OrderMapper orderMapper;
+
+  @Inject
+  ProductMapper productMapper;
+
   private long id;
   private String name;
 
@@ -24,6 +36,27 @@ public class User implements Record {
 
   public String getName() {
     return name;
+  }
+
+  public double getProductPrice(long productId) {
+    return productMapper.findById(productId).getPrice();
+  }
+
+  public void placeOrder(Map<String, Object> info) {
+    double amount = 0;
+    long productId;
+    int quantity;
+    for (Map map: (List<Map>)info.get("order_items")) {
+      productId =  Long.valueOf(String.valueOf(map.get("product_id")));
+      quantity = Integer.valueOf(String.valueOf(map.get("quantity")));
+      amount +=  getProductPrice(productId) * quantity;
+      map.put("amount", amount);
+    }
+    orderMapper.save(info);
+  }
+
+  public Optional<Order> findOrderById(long orderId) {
+    return Optional.ofNullable(orderMapper.findById(orderId));
   }
 
   @Override

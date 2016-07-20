@@ -3,7 +3,7 @@
 <mapper namespace="com.thoughtworks.api.infrastructure.mybatis.mappers.UserMapper">
     <insert id="save" useGeneratedKeys="true" keyProperty="info.id" keyColumn="id">
         INSERT INTO users (name)
-        VALUES (#{info.name})
+        VALUES (#{info.name});
     </insert>
 
     <select id="findById" resultMap="records.user">

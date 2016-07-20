@@ -103,6 +103,8 @@ r: 14 min
 
 2. create order with parameters and find by user id and order id  
  e: 25 min  
+ r: 69 min  
+ reason: still not that familiar with mybatis
     
    
     
