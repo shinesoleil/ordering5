@@ -19,6 +19,6 @@ public class Routes {
     }
 
     public URI productUrl(Product product) {
-        return URI.create("products" + product.getId());
+        return URI.create("products/" + product.getId());
     }
 }

@@ -47,4 +47,11 @@ public class ProductsApi {
   public List<Product> findProducts() {
     return productRepository.find();
   }
+
+  @GET
+  @Path("{productId}")
+  @Produces(MediaType.APPLICATION_JSON)
+  public Product findProductById(@PathParam("productId") long productId) {
+    return productRepository.findById(productId).orElseThrow(() -> new NotFoundException("not found"));
+  }
 }

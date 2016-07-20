@@ -44,10 +44,24 @@ public class ProductsApiTest extends ApiSupport {
     Map<String, Object> info = TestHelper.productMap();
     productRepository.create(info);
     long id = Long.valueOf(String.valueOf(info.get("id")));
+
     Response get = get("products");
     List<Map<String, Object>> mapList = get.readEntity(List.class);
 
     assertThat(get.getStatus(), is(200));
     assertThat(Long.valueOf(String.valueOf(mapList.get(0).get("id"))), is(id));
+  }
+
+  @Test
+  public void should_return_product_json_when_get_product_by_id() {
+    Map<String, Object> info = TestHelper.productMap();
+    productRepository.create(info);
+    long id = Long.valueOf(String.valueOf(info.get("id")));
+
+    Response get = get("products/" + id);
+    Map<String, Object> map = get.readEntity(Map.class);
+
+    assertThat(get.getStatus(), is(200));
+    assertThat(map.get("name"), is("desk"));
   }
 }
