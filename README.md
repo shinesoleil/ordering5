@@ -25,6 +25,7 @@
   
 5. return 200 when GET products  
  e: 3 min  
+ r: 2 min
   
 
 6. find all products  

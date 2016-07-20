@@ -4,6 +4,7 @@ import com.thoughtworks.api.domain.product.ProductRepository;
 import com.thoughtworks.api.web.exception.InvalidParameterException;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
@@ -41,5 +42,10 @@ public class ProductsApi {
 
     productRepository.findById(id);
     return Response.status(201).build();
+  }
+
+  @GET
+  public Response findProducts() {
+    return Response.status(200).build();
   }
 }

@@ -33,4 +33,12 @@ public class ProductsApiTest extends ApiSupport {
 
     assertThat(post.getStatus(), is(400));
   }
+
+  @Test
+  public void should_return_200_when_get_products() {
+    Response get = get("products");
+
+    assertThat(get.getStatus(), is(200));
+
+  }
 }
