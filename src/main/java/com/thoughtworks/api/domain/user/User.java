@@ -16,6 +16,7 @@ public class User implements Record {
   @Inject
   OrderMapper orderMapper;
 
+
   @Inject
   ProductMapper productMapper;
 
