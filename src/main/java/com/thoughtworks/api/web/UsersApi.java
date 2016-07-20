@@ -1,13 +1,11 @@
 package com.thoughtworks.api.web;
 
+import com.thoughtworks.api.domain.user.User;
 import com.thoughtworks.api.domain.user.UserRepository;
 import com.thoughtworks.api.web.exception.InvalidParameterException;
 
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;
@@ -40,7 +38,8 @@ public class UsersApi {
   }
 
   @GET
-  public Response find() {
-    return Response.status(200).build();
+  @Produces(MediaType.APPLICATION_JSON)
+  public List<User> find() {
+    return userRepository.find();
   }
 }
