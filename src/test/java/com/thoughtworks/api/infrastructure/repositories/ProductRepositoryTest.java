@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import javax.inject.Inject;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -28,5 +29,17 @@ public class ProductRepositoryTest {
     Optional<Product> product = productRepository.findById(id);
 
     assertThat(product.get().getId(), is(id));
+  }
+
+  @Test
+  public void should_find_all_products() {
+    Map<String, Object> info = TestHelper.productMap();
+    productRepository.create(info);
+
+    long id = Long.valueOf(String.valueOf(info.get("id")));
+    List<Product> productList = productRepository.find();
+
+    assertThat(productList.size(), is(1));
+    assertThat(productList.get(0).getId(), is(id));
   }
 }

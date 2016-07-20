@@ -4,6 +4,7 @@ import com.thoughtworks.api.domain.product.Product;
 import com.thoughtworks.api.infrastructure.mybatis.mappers.ProductMapper;
 
 import javax.inject.Inject;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -19,5 +20,10 @@ public class ProductRepository implements com.thoughtworks.api.domain.product.Pr
   @Override
   public Optional<Product> findById(long id) {
     return Optional.ofNullable(productMapper.findById(id));
+  }
+
+  @Override
+  public List<Product> find() {
+    return productMapper.find();
   }
 }
