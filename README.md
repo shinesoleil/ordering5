@@ -1,7 +1,6 @@
 #Ordering tasking
 
-###Total: 249 min (about 4 hours)
-###Total Estimated Time: 225 min
+###Total: 271 min (about 4 hours and 30 minutes)
 
 
 * ###/products
